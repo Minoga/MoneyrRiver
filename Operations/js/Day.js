@@ -16,14 +16,9 @@ Day.prototype.addTransactions = function (summ) {
     this.month.balance += summ;
     this.month.year.balance += summ;
     this.month.year.account.balance += summ;
+    console.log(this);
 };
 
-/*
- * Метод получения изменений за день
- */
-Day.prototype.getBalance = function () {
-    return this.balance;
-};
 /*
  * Метод получения текущего баланса
  */
