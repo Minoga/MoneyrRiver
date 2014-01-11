@@ -22,3 +22,14 @@ Month.prototype.getDay = function (day) {
     }
     return this.days[day]
 };
+/*
+ * Метод, возвращающий все транзакции за выбранный месяц
+ */
+Month.prototype.getMovement = function () {
+    var movementData = '';
+    for (var dayCurrent in this.days) {
+        movementData += this.days[dayCurrent].getMovement() + ',';
+    }
+    return movementData;
+
+};

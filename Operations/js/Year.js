@@ -11,7 +11,7 @@ var Year = function (year, account) {
 };
 inherit(TimeFrame, Year);
 /*
- * Метод возращающий требуемый месяц
+ * Метод, возращающий требуемый месяц
  * @param {Number} month номер месяца в году
  */
 Year.prototype.getMonth = function (month) {
@@ -19,5 +19,15 @@ Year.prototype.getMonth = function (month) {
         this.months[month] = new Month(month, this);
     }
     return this.months[month];
+};
+/*
+* Метод, возвращающий все транзакции за выбранный год
+*/
+Year.prototype.getMovement = function () {
+    var movementData = '';
+    for (var monthCurrent in this.months) {
+        movementData += this.months[monthCurrent].getMovement();
+    }
+    return movementData;
 };
 

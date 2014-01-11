@@ -2,9 +2,9 @@
  * Класс дня
  */
 var Day = function (day, month) {
+    this.balance = [];
     this.day = day;
     this.month = month;
-    this.balance = 0;
 };
 inherit(TimeFrame, Day);
 /*
@@ -12,11 +12,17 @@ inherit(TimeFrame, Day);
  * @param {Number} summ размер транзакции
  */
 Day.prototype.addTransactions = function (summ) {
-    this.balance += summ;
+    this.balance.push(summ);
     this.month.balance += summ;
     this.month.year.balance += summ;
     this.month.year.account.balance += summ;
-    console.log(this);
+};
+Day.prototype.getBalance = function () {
+    var balance = 0;
+    this.balance.forEach(function(item){
+        balance += item;
+    });
+    return balance;
 };
 
 /*
@@ -42,6 +48,13 @@ Day.prototype.getSumm = function () {
     }
 
     return summ;
+};
+
+/*
+ * Метод, возвращающий все транзакции за выбранный день
+ */
+Day.prototype.getMovement = function () {
+    return this.balance.join();
 };
 
 

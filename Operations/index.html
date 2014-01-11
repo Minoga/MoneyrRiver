@@ -8,15 +8,35 @@
     </head>
     <body>
         <div class="container">
+            <ul class="nav nav-tabs">
+                <li><a href="#tab1">Создать счет</a></li>
+                <li><a href="#tab2">Ввод транзакций по счету</a></li>
+                <li><a href="#tab3">Получение баланса</a></li>
+                <li><a href="#tab4">Движение по счету за период</a></li>
+            </ul>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" id="tab1">
+                    <h3>Создать счет</h3>
+                    <form id="accountForm">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="summ">Введите название счета:</label>
+                                <input type="text" id="accountName" name="accountName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-default" type="submit" id="addAccount">Создать счет</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6" id="tab2">
                     <h3>Ввод транзакций по счету</h3>
-                    <form>
+                    <form id="transactionForm">
                         <p class="s_mb_5"><strong>Выберите дату:</strong></p>
                         <div class="form-group">
                             <div class="row show-grid">
                                 <div class="col-lg-3">
-                                    <select id="day" class="form-control">
+                                    <select id="day" class="form-control" name="day">
                                         <option selected style="display:none;">День</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -52,7 +72,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4">
-                                    <select id="month" class="form-control">
+                                    <select id="month" class="form-control" name="month">
                                         <option selected style="display:none;">Месяц</option>
                                         <option value="1">Январь</option>
                                         <option value="2">Февраль</option>
@@ -69,7 +89,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select id="year" class="form-control">
+                                    <select id="year" class="form-control" name="year">
                                         <option selected style="display:none;">Год</option>
                                         <option value="2014">2014</option>
                                         <option value="2013">2013</option>
@@ -87,8 +107,7 @@
                         <div class="form-group">
                             <div class="row show-grid">
                                 <div class="col-lg-5">
-                                    <select id="account" class="form-control">
-                                        <option>Неважно. Счет один.</option>
+                                    <select id="accountsList" class="form-control" name="accountsList">
                                     </select>
                                 </div>
                             </div>
@@ -97,7 +116,7 @@
                         <div class="form-group">
                             <p class="s_mb_5"><strong>Выберите тип операции:</strong></p>
                             <label class="radio-inline s_pt_0">
-                                <input type="radio" value="deposit" name="typeOperation" checked> Пополнение
+                                <input type="radio" value="deposit" name="typeOperation" id ="deposit" checked> Пополнение
                             </label>
                             <label class="radio-inline s_pt_0">
                                 <input type="radio" value="withdrawal" name="typeOperation"> Вывод
@@ -107,22 +126,22 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <label for="summ">Введите сумму:</label>
-                                <input type="text" id="summ" class="form-control">
+                                <input type="text" id="summ" class="form-control" name="summ">
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-default" type="submit">Добавить</button>
+                            <a class="btn btn-default" type="submit" id="addTransaction">Добавить</a>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" id="tab3">
                     <h3>Получение баланса</h3>
-                    <form>
+                    <form id="balanceForm">
                         <p class="s_mb_5"><strong>Выберите дату:</strong></p>
                         <div class="form-group">
                             <div class="row show-grid">
                                 <div class="col-lg-3">
-                                    <select id="dayBalance" class="form-control">
+                                    <select id="dayBalance" class="form-control" name="dayBalance">
                                         <option selected style="display:none;">День</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -158,7 +177,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4">
-                                    <select id="monthBalance" class="form-control">
+                                    <select id="monthBalance" class="form-control" name="monthBalance">
                                         <option selected style="display:none;">Месяц</option>
                                         <option value="1">Январь</option>
                                         <option value="2">Февраль</option>
@@ -175,7 +194,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select id="yearBalance" class="form-control">
+                                    <select id="yearBalance" class="form-control" name="yearBalance">
                                         <option selected style="display:none;">Год</option>
                                         <option value="2014">2014</option>
                                         <option value="2013">2013</option>
@@ -189,35 +208,40 @@
                                 </div>
                             </div>
                         </div>
-
+                        <p class="s_mb_5"><strong>Выберите счет:</strong></p>
                         <div class="form-group">
-                            <button class="btn btn-default" type="submit">Показать баланс</button>
+                            <div class="row show-grid">
+                                <div class="col-lg-5">
+                                    <select id="accountsListTr" class="form-control" name="accountsList">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-default" id="getBalance" type="submit">Показать баланс</a>
                         </div>
                     </form>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Расчет движения средств за период</h3>
-                    <form>
+                <div class="col-md-6" id="tab4">
+                    <h3>Движение по счету за период</h3>
+                    <form id="movementForm">
                         <div class="form-group">
                             <p class="s_mb_5"><strong>Выберите требуемый период:</strong></p>
                             <label class="radio-inline s_pt_0">
-                                <input type="radio" checked="" name="typeOperation" value="day"> День
+                                <input type="radio" checked="" name="typePeriod" value="day"> День
                             </label>
                             <label class="radio-inline s_pt_0">
-                                <input type="radio" name="typeOperation" value="month"> Месяц
+                                <input type="radio" name="typePeriod" value="month"> Месяц
                             </label>
                             <label class="radio-inline s_pt_0">
-                                <input type="radio" name="typeOperation" value="year"> Год
+                                <input type="radio" name="typePeriod" value="year"> Год
                             </label>
                         </div>
                         <p class="s_mb_5"><strong>Выберите дату:</strong></p>
                         <div class="form-group">
                             <div class="row show-grid">
                                 <div class="col-lg-3">
-                                    <select class="form-control" id="dayMove">
+                                    <select class="form-control" id="dayMove" name="day">
                                         <option style="display:none;" selected="">День</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -253,7 +277,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4">
-                                    <select class="form-control" id="monthMove">
+                                    <select class="form-control" id="monthMove" name="month">
                                         <option style="display:none;" selected="">Месяц</option>
                                         <option value="1">Январь</option>
                                         <option value="2">Февраль</option>
@@ -270,7 +294,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3">
-                                    <select class="form-control" id="yearMove">
+                                    <select class="form-control" id="yearMove" name="year">
                                         <option style="display:none;" selected="">Год</option>
                                         <option value="2014">2014</option>
                                         <option value="2013">2013</option>
@@ -284,13 +308,29 @@
                                 </div>
                             </div>
                         </div>
+                        <p class="s_mb_5"><strong>Выберите счет:</strong></p>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default">Рассчитать</button>
+                            <div class="row show-grid">
+                                <div class="col-lg-5">
+                                    <select name="accountsList" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a type="submit" class="btn btn-default" id="getMovement">Рассчитать</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </body>
+    <script type="text/javascript" src="js/inherit.js"></script>
+    <script type="text/javascript" src="js/TimeFrame.js"></script>
+    <script type="text/javascript" src="js/Day.js"></script>
+    <script type="text/javascript" src="js/Month.js"></script>
+    <script type="text/javascript" src="js/Year.js"></script>
+    <script type="text/javascript" src="js/Account.js"></script>
+    <script type="text/javascript" src="js/CreateAccountForm.js"></script>
 </html>
 
