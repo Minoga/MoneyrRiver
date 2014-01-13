@@ -2,6 +2,7 @@
  * Создает класс месяца
  * @param {number} year год
  * @param {object} account счет к которому относится год
+ * @constructor
  */
 var Year = function (year, account) {
     this.year = year;
