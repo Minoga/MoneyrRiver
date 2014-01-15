@@ -1,10 +1,14 @@
-/*
- * Класс дня
+/**
+ * Создает класс дня
+ * @param {Object} params
+ * @param {Number} params.day
+ * @param {Object} params.month
+ * @constructor
  */
-var Day = function (day, month) {
+var Day = function (params) {
     this.balance = [];
-    this.day = day;
-    this.month = month;
+    this.day = params.day;
+    this.month = params.month;
 };
 inherit(TimeFrame, Day);
 /*

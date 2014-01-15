@@ -1,11 +1,13 @@
 /**
- * Создает класс месяца
- * @param {number} month номер месяца в году
- * @param {object} year год к которому относится месяц
+ * Создает класс дня
+ * @param {Object} params
+ * @param {Number} params.month
+ * @param {Object} params.year
+ * @constructor
  */
-var Month = function (month, year) {
-    this.month = month;
-    this.year = year;
+var Month = function (params) {
+    this.month = params.month;
+    this.year = params.year;
     this.days = {};
     this.balance = 0;
 };
@@ -18,7 +20,7 @@ inherit(TimeFrame, Month);
 
 Month.prototype.getDay = function (day) {
     if (!this.days[day]) {
-        this.days[day] = new Day(day, this);
+        this.days[day] = new Day({'day': day, 'month': this});
     }
     return this.days[day]
 };

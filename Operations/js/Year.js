@@ -1,12 +1,13 @@
 /**
  * Создает класс месяца
- * @param {number} year год
- * @param {object} account счет к которому относится год
+ * @param {Object} params
+ * @param {Number} params.year
+ * @param {Object} params.account
  * @constructor
  */
-var Year = function (year, account) {
-    this.year = year;
-    this.account = account;
+var Year = function (params) {
+    this.year = params.year;
+    this.account = params.account;
     this.balance = 0;
     this.months = {};
 };
@@ -17,7 +18,7 @@ inherit(TimeFrame, Year);
  */
 Year.prototype.getMonth = function (month) {
     if (!this.months[month]) {
-        this.months[month] = new Month(month, this);
+        this.months[month] = new Month({'month': month, 'year': this});
     }
     return this.months[month];
 };

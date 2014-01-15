@@ -2,7 +2,7 @@
  * Класс счета
  */
 var Account = function (balance) {
-    this.balance = balance;
+    this.balance = balance || 0;
     this.years = {};
 };
 
@@ -12,7 +12,7 @@ var Account = function (balance) {
  */
 Account.prototype.getYear = function (year) {
     if (!this.years[year]) {
-        this.years[year] = new Year(year, this);
+        this.years[year] = new Year({'year': year, 'account': this});
     }
     return this.years[year];
 };
