@@ -1,13 +1,14 @@
-/*
- * Класс года
+/**
+ * @class
+ * @abstract
+ * @constructor
  */
 var TimeFrame = function (account) {
 };
 
-/*
- * Метод возращающий требуемый месяц
- *
- * @param {Number} month номер месяца в году
+/**
+ * Метод возращающий баланс
+ * @returns {Number}
  */
 
 TimeFrame.prototype.getBalance = function () {

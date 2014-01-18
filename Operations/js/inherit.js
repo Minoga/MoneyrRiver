@@ -1,9 +1,9 @@
 /**
  * Организует наследование для функций-конструкторов
- * @param {Function} Parent Родительский конструктор
  * @param {Function} Child Дочерний конструктор
+ * @param {Function} Parent Родительский конструктор
  */
-function inherit(Parent, Child) {
+function inherit(Child, Parent) {
     function F() {}
     F.prototype = Parent.prototype;
     Child.prototype = new F();

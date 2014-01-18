@@ -1,5 +1,6 @@
 /**
  * Создает класс дня
+ * @class
  * @param {Object} params
  * @param {Number} params.day
  * @param {Object} params.month
@@ -10,10 +11,10 @@ var Day = function (params) {
     this.day = params.day;
     this.month = params.month;
 };
-inherit(TimeFrame, Day);
-/*
+
+/**
  * Метод добавляющий транзакцию
- * @param {Number} summ размер транзакции
+ * @param {Number} summ
  */
 Day.prototype.addTransactions = function (summ) {
     this.balance.push(summ);
@@ -21,6 +22,11 @@ Day.prototype.addTransactions = function (summ) {
     this.month.year.balance += summ;
     this.month.year.account.balance += summ;
 };
+
+/**
+ * Метод получения баланса транзакцию
+ * @returns {Number}
+ */
 Day.prototype.getBalance = function () {
     var balance = 0;
     this.balance.forEach(function(item){
@@ -29,8 +35,9 @@ Day.prototype.getBalance = function () {
     return balance;
 };
 
-/*
+/**
  * Метод получения текущего баланса
+ * @returns {Number}
  */
 Day.prototype.getSumm = function () {
     var day = this.day;
@@ -54,8 +61,9 @@ Day.prototype.getSumm = function () {
     return summ;
 };
 
-/*
+/**
  * Метод, возвращающий все транзакции за выбранный день
+ * @returns {String}
  */
 Day.prototype.getMovement = function () {
     return this.balance.join();

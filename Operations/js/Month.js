@@ -1,5 +1,6 @@
 /**
  * Создает класс дня
+ * @class
  * @param {Object} params
  * @param {Number} params.month
  * @param {Object} params.year
@@ -12,20 +13,22 @@ var Month = function (params) {
     this.balance = 0;
 };
 
-inherit(TimeFrame, Month);
-/*
+inherit(Month, TimeFrame);
+/**
  * Метод возращающий требуемый день
  * @param {Number} day номер дня в месяце
+ * @returns {Object}
  */
 
 Month.prototype.getDay = function (day) {
     if (!this.days[day]) {
-        this.days[day] = new Day({'day': day, 'month': this});
+        this.days[day] = new Day({day: day, month: this});
     }
     return this.days[day]
 };
-/*
+/**
  * Метод, возвращающий все транзакции за выбранный месяц
+ * @returns {String}
  */
 Month.prototype.getMovement = function () {
     var movementData = '';
@@ -33,5 +36,4 @@ Month.prototype.getMovement = function () {
         movementData += this.days[dayCurrent].getMovement() + ',';
     }
     return movementData;
-
 };

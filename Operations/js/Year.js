@@ -11,19 +11,20 @@ var Year = function (params) {
     this.balance = 0;
     this.months = {};
 };
-inherit(TimeFrame, Year);
-/*
+/**
  * Метод, возращающий требуемый месяц
  * @param {Number} month номер месяца в году
+ * @returns {Object}
  */
 Year.prototype.getMonth = function (month) {
     if (!this.months[month]) {
-        this.months[month] = new Month({'month': month, 'year': this});
+        this.months[month] = new Month({month: month, year: this});
     }
     return this.months[month];
 };
-/*
+/**
 * Метод, возвращающий все транзакции за выбранный год
+* @returns {String}
 */
 Year.prototype.getMovement = function () {
     var movementData = '';

@@ -1,16 +1,30 @@
-/** @constructor */
+/**
+ * @class
+ * @abstract
+ * @constructor
+ */
 var Form = function(){
+    this.accounts = {};
 };
 
-Form.prototype._createOption = function(accountName, value){
+
+/**
+ * @param {HTMLFormElement} accountName
+ * @param {Object} accounts
+ */
+Form.prototype.createOption = function(accountName, accounts){
+    this.accounts = accounts;
     var option = document.createElement('option');
-    option.innerHTML = accountName;
-    option.value = value;
-    console.log(this);
+    option.innerHTML = accountName.value;
+    option.value = this.accounts.length-1;
     this.accountsList.appendChild(option);
 };
 
-Form.prototype._getData = function(form) {
+/**
+ * @param {HTMLFormElement} form
+ * @returns {Object}
+ */
+Form.prototype.getData = function(form) {
     return {
         'day': form.day.value,
         'month': form.month.value,
